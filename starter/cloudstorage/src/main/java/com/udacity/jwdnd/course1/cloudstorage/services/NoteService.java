@@ -1,7 +1,6 @@
 package com.udacity.jwdnd.course1.cloudstorage.services;
 
 import com.udacity.jwdnd.course1.cloudstorage.mapper.NoteMapper;
-import com.udacity.jwdnd.course1.cloudstorage.mapper.UserMapper;
 import com.udacity.jwdnd.course1.cloudstorage.model.Note;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +25,9 @@ public class NoteService {
         return noteMapper.update(new Note(noteId, note.getNoteTitle(), note.getNoteDescription(),userId));
     }
 
-    public int deleteNote(int noteId, String username){
+    public void deleteNote(int noteId, String username){
         int userId = userService.getUserId(username);
-        return noteMapper.delete(noteId, userId);
+        noteMapper.delete(noteId, userId);
     }
 
     public List<Note> getAllNotes(String username){
